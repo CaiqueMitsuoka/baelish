@@ -11,7 +11,9 @@ defmodule BaelishWeb.LinksController do
 
     LinkCache.create(uid, link)
 
-    render conn, "create.html"
+    conn
+    |> assign(:uid, uid)
+    |> render("create.html")
   end
 
   def link_by_uid(conn, %{"uid" => uid}) do

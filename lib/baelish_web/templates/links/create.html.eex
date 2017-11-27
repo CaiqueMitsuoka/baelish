@@ -1,1 +1,5 @@
 created!
+<br />
+Your short link is: <%= links_url(BaelishWeb.Endpoint, :link_by_uid, @uid) %>
+<br />
+<%= link('Go', to: links_path(BaelishWeb.Endpoint, :link_by_uid, @uid)) %>
