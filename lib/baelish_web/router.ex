@@ -17,6 +17,7 @@ defmodule BaelishWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", LinksController, :new
+    get "/h/:uid", LinksController, :link_by_uid
     post "/links", LinksController, :create
   end
 

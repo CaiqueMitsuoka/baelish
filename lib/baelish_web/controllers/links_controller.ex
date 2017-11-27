@@ -6,8 +6,18 @@ defmodule BaelishWeb.LinksController do
   end
 
   def create(conn, %{"link" => %{"value" => link}}) do
-    IO.puts link
+    {:ok, uid} = LinkGenerator.perform link
+    IO.puts uid
+
+    LinkCache.create(uid, link)
 
     render conn, "create.html"
+  end
+
+  def link_by_uid(conn, %{"uid" => uid}) do
+    { :ok, url } = LinkCache.read(uid)
+    IO.puts url
+
+    redirect conn, external: url
   end
 end
