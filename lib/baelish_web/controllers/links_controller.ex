@@ -14,7 +14,7 @@ defmodule BaelishWeb.LinksController do
   end
 
   def link_by_uid(conn, %{"uid" => uid}) do
-    { :ok, url } = LinkCache.read(uid)
+    url = LinkRead.perform(uid)
     IO.puts url
 
     redirect conn, external: url
