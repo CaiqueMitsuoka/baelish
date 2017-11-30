@@ -10,6 +10,8 @@ defmodule LinkCache do
 
   def create(uid, url) do
     GenServer.cast(get_link_cache(), {:create, uid, url})
+
+    { uid, url }
   end
 
   def read(uid) do

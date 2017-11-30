@@ -6,13 +6,10 @@ defmodule BaelishWeb.LinksController do
   end
 
   def create(conn, %{"link" => %{"value" => link}}) do
-    {:ok, uid} = LinkGenerator.perform link
-    IO.puts uid
-
-    LinkCache.create(uid, link)
+    { :ok, link } = LinkPersistance.perform(link)
 
     conn
-    |> assign(:uid, uid)
+    |> assign(:uid, link.uid)
     |> render("create.html")
   end
 
