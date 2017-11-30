@@ -1,4 +1,4 @@
-defmodule LinkRead do
+defmodule Link.Read do
   def perform(uid) do
     to_string(uid)
     |> check_cache
@@ -6,7 +6,7 @@ defmodule LinkRead do
   end
 
   def check_cache(uid) do
-    { LinkCache.read(uid), uid }
+    { Link.Cache.read(uid), uid }
   end
 
   def check_database({ { :ok, url }, uid }) do

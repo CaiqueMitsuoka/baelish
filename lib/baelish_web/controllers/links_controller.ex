@@ -6,7 +6,7 @@ defmodule BaelishWeb.LinksController do
   end
 
   def create(conn, %{"link" => %{"value" => link}}) do
-    { :ok, link } = LinkPersistance.perform(link)
+    { :ok, link } = Link.Persistance.perform(link)
 
     conn
     |> assign(:uid, link.uid)
@@ -14,7 +14,7 @@ defmodule BaelishWeb.LinksController do
   end
 
   def link_by_uid(conn, %{"uid" => uid}) do
-    url = LinkRead.perform(uid)
+    url = Link.Read.perform(uid)
     IO.puts url
 
     redirect conn, external: url

@@ -1,13 +1,13 @@
 require IEx
-defmodule LinkPersistance do
+defmodule Link.Persistance do
   def perform(url) do
     persist(url, Baelish.Repo.get_by(Baelish.Link, url: url))
   end
 
   def persist(url, nil) do
     to_string(url)
-    |> LinkGenerator.perform
-    |> LinkCache.create(url)
+    |> Link.Generator.perform
+    |> Link.Cache.create(url)
     |> format_link
     |> Baelish.Repo.insert
   end

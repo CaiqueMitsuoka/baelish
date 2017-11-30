@@ -1,4 +1,4 @@
-defmodule LinkCache do
+defmodule Link.Cache do
   use GenServer
 
   def start_link do
@@ -41,7 +41,7 @@ defmodule LinkCache do
   def find_process([ head | processes ]) do
     { module, pid, :supervisor, [_] } = head
 
-    if module == LinkCache do
+    if module == Link.Cache do
       pid
     else
       find_process(processes)
