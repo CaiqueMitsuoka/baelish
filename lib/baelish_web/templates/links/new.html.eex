@@ -2,6 +2,6 @@
   <form class="new-link__form" action="/links" method="post">
     <%= text_input :link, :value, class: 'new-link__input' %>
 
-    <%= submit 'Encurtar', class: 'new-link__buttom' %>
+    <%= submit 'Encurtar', class: 'new-link__input new-link__input__buttom' %>
   </form>
 </section>

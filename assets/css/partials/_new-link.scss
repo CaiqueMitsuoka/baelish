@@ -11,21 +11,25 @@
     flex-direction: column;
   }
 
-  &__buttom {
-    margin: 15px;
-    align-self: flex-end;
-    background-color: yellow;
-    padding: 8px;
-    border: 5px solid yellow;
-
-    &:focus {
-      background-color: blue;
-    }
-  }
 
   &__input {
     margin: 15px;
     padding: 8px;
-    border: 5px solid yellow;
+    border-radius: 3px;
+    border: 5px solid $primary-color;
+
+    &__buttom {
+      align-self: flex-end;
+      font-weight: 500;
+      background-color: $white;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+
+      &:focus {
+        background-color: $primary-dark-color;
+      }
+    }
   }
 }
