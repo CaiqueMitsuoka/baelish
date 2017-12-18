@@ -1,0 +1,31 @@
+.new-link {
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+
+  &__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__buttom {
+    margin: 15px;
+    align-self: flex-end;
+    background-color: yellow;
+    padding: 8px;
+    border: 5px solid yellow;
+
+    &:focus {
+      background-color: blue;
+    }
+  }
+
+  &__input {
+    margin: 15px;
+    padding: 8px;
+    border: 5px solid yellow;
+  }
+}
