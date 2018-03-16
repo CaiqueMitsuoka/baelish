@@ -6,16 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :baelish,
-  ecto_repos: [Baelish.Repo]
+config :baelish, ecto_repos: [Baelish.Repo]
 
 # Configures the endpoint
 config :baelish, BaelishWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "PyBdurw1aLW+NkUhQ9jpptOQB7A4gjmql58cfESRFkkLvuPm1I5SX3yc6gSxEsqc",
   render_errors: [view: BaelishWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Baelish.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Baelish.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,4 +22,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

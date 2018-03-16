@@ -17,7 +17,7 @@
       <header class="header">
         <img class="header__logo" src="<%= static_path(@conn, "/images/logo-1.png") %>"/>
       </header>
-      
+
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>

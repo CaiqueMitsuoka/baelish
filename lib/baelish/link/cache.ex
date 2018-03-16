@@ -2,7 +2,7 @@ defmodule Link.Cache do
   use GenServer
 
   def start_link do
-    IO.puts 'Link Cache started...'
+    IO.puts('Link Cache started...')
     GenServer.start_link(__MODULE__, :ok)
   end
 
@@ -11,7 +11,7 @@ defmodule Link.Cache do
   def create(uid, url) do
     GenServer.cast(get_link_cache(), {:create, uid, url})
 
-    { uid, url }
+    {uid, url}
   end
 
   def read(uid) do
@@ -38,8 +38,8 @@ defmodule Link.Cache do
 
   # Others
 
-  def find_process([ head | processes ]) do
-    { module, pid, :supervisor, [_] } = head
+  def find_process([head | processes]) do
+    {module, pid, :supervisor, [_]} = head
 
     if module == Link.Cache do
       pid
@@ -53,6 +53,6 @@ defmodule Link.Cache do
   end
 
   def get_link_cache do
-    find_process Supervisor.which_children(Baelish.Supervisor)
+    find_process(Supervisor.which_children(Baelish.Supervisor))
   end
 end
