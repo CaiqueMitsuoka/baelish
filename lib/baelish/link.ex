@@ -3,10 +3,9 @@ defmodule Baelish.Link do
   import Ecto.Changeset
   alias Baelish.Link
 
-
   schema "links" do
-    field :uid, :string
-    field :url, :string
+    field(:uid, :string)
+    field(:url, :string)
 
     timestamps()
   end

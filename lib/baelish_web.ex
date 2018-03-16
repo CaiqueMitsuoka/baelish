@@ -28,8 +28,9 @@ defmodule BaelishWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/baelish_web/templates",
-                        namespace: BaelishWeb
+      use Phoenix.View,
+        root: "lib/baelish_web/templates",
+        namespace: BaelishWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
