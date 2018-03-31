@@ -1,4 +1,5 @@
 defmodule BaelishWeb.LinksController do
+  require Logger
   use BaelishWeb, :controller
 
   def new(conn, _params) do
@@ -6,7 +7,7 @@ defmodule BaelishWeb.LinksController do
   end
 
   def create(conn, %{"link" => %{"value" => link}}) do
-    {:ok, link} = Link.Persistance.perform(link)
+    link = Shortener.Persistance.perform(link)
 
     conn
     |> assign(:uid, link.uid)
@@ -14,9 +15,9 @@ defmodule BaelishWeb.LinksController do
   end
 
   def link_by_uid(conn, %{"uid" => uid}) do
-    url = Link.Read.perform(uid)
-    IO.puts(url)
+    link = Shortener.Retriver.from_uid(uid)
+    Logger.info("[URL] [ACCESS] #{link.url}")
 
-    redirect(conn, external: url)
+    redirect(conn, external: link.url)
   end
 end
