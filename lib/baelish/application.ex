@@ -14,7 +14,7 @@ defmodule Baelish.Application do
       supervisor(BaelishWeb.Endpoint, []),
       # Start your own worker by calling: Baelish.Worker.start_link(arg1, arg2, arg3)
       # worker(Baelish.Worker, [arg1, arg2, arg3]),
-      supervisor(Link.Cache, [])
+      supervisor(Shortener.Cache, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

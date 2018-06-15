@@ -1,17 +1,23 @@
-defmodule Link.Cache do
+defmodule Shortener.Cache do
+  require Logger
   use GenServer
+  alias Baelish.Link
 
   def start_link do
-    IO.puts('Link Cache started...')
+    Logger.info("Shortener Cache started...")
     GenServer.start_link(__MODULE__, :ok)
   end
 
   # Client
 
   def create(uid, url) do
-    GenServer.cast(get_link_cache(), {:create, uid, url})
+    create(%Link{uid: uid, url: url})
+  end
 
-    {uid, url}
+  def create(link) do
+    GenServer.cast(get_link_cache(), {:create, link})
+
+    link
   end
 
   def read(uid) do
@@ -28,11 +34,11 @@ defmodule Link.Cache do
     {:reply, Map.fetch(urls, uid), urls}
   end
 
-  def handle_cast({:create, uid, url}, urls) do
-    if Map.has_key?(urls, uid) do
+  def handle_cast({:create, link}, urls) do
+    if Map.has_key?(urls, link.uid) do
       {:noreply, urls}
     else
-      {:noreply, Map.put(urls, uid, url)}
+      {:noreply, Map.put(urls, link.uid, link)}
     end
   end
 
@@ -41,7 +47,7 @@ defmodule Link.Cache do
   def find_process([head | processes]) do
     {module, pid, :supervisor, [_]} = head
 
-    if module == Link.Cache do
+    if module == Shortener.Cache do
       pid
     else
       find_process(processes)

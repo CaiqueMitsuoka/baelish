@@ -1,4 +1,4 @@
-defmodule Token do
+defmodule Shortener.Token do
   @characters String.graphemes("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
 
   def generate(link) do
